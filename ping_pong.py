@@ -48,9 +48,11 @@ ball = GameSprite('b.png',400,200,3,50,50)
 
 finish = False
 font.init()
-font1 = font.SysFont('Arial',70)
-win = font1.render('YOU WIN!',True,(157, 237, 165))
-lose = font1.render('YOU LOSE!!!',True,(255, 3, 3))
+font1 = font.SysFont('Marker',70)
+win_r = font1.render('RIGHT WIN!',True,(157, 237, 165))
+win_l = font1.render('LEFT WIN!',True,(157, 237, 165))
+lose_r = font1.render('RIGHT LOSE!!!',True,(255, 3, 3))
+lose_l = font1.render('LEFT LOSE!!!',True,(255, 3, 3))
 
 speed_x = 3
 speed_y = 3
@@ -77,5 +79,14 @@ while game:
         speed_y *= -1
     if ball.rect.y <= 0:
         speed_y *= -1
+
+    if ball.rect.x >= 650:
+        window.blit(win_l,(230,200))
+        window.blit(lose_r,(230,250))
+    if ball.rect.x <= 0:
+        window.blit(win_r,(230,200))
+        window.blit(lose_l,(230,250))
+
+
     display.update()
     clock.tick(60)
