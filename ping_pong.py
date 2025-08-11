@@ -52,6 +52,8 @@ font1 = font.SysFont('Arial',70)
 win = font1.render('YOU WIN!',True,(157, 237, 165))
 lose = font1.render('YOU LOSE!!!',True,(255, 3, 3))
 
+speed_x = 3
+speed_y = 3
 
 while game:
 
@@ -65,6 +67,8 @@ while game:
         player_r.update_r()
         player_l.reset()
         player_r.reset()
+        ball.rect.x += speed_x
+        ball.rect.y += speed_y
         ball.reset()
     display.update()
     clock.tick(60)
